@@ -1,10 +1,10 @@
-package com.fracong.myswing;
+package com.fracong.thread;
 
 import java.util.Set;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fracong.config.ConfigProperties;
 import com.fracong.util.CommonUtils;
-import com.fracong.util.ConfigConstant;
 import com.fracong.util.EnumUtils.ConfigKey;
 import com.fracong.util.EnumUtils.ConfigType;
 import com.fracong.util.EnumUtils.FileType;
@@ -24,14 +24,14 @@ public class InitConfigThead extends Thread{
 				if (ConfigType.ALL.equals(configType) || ConfigType.INIT.equals(configType)) continue;
 				String path = CommonUtils.getPath(PathType.CONF, configType.getName(), FileType.JSON);
 				JSONObject json = CommonUtils.getJsonObjectBy(path);
-				ConfigConstant.ALL_CONFIG.put(configType.getName(), json);
+				ConfigProperties.ALL_CONFIG.put(configType.getName(), json);
 				System.out.println(configType.getName());
 			}
 		} else if (ConfigType.INIT.equals(type)) {
 			this.setInitConfig();
 		} else {
 			JSONObject json = CommonUtils.getJsonObjectBy(CommonUtils.getPath(PathType.CONF, type.getName(), FileType.JSON));
-			ConfigConstant.ALL_CONFIG.put(type.getName(), json);
+			ConfigProperties.ALL_CONFIG.put(type.getName(), json);
 		}
 	}
 
@@ -41,10 +41,10 @@ public class InitConfigThead extends Thread{
 		Set<String> keySet = json.keySet();
 		for (String key : keySet) {
 			if(ConfigKey.LANG.getValue().equals(key)){
-				ConfigConstant.INIT_LANG = json.getString(key);
+				ConfigProperties.INIT_LANG = json.getString(key);
 				continue;
 			}
-			ConfigConstant.INIT_CONFIG.put(key, json.getJSONObject(key));
+			ConfigProperties.INIT_CONFIG.put(key, json.getJSONObject(key));
 		}
 	}
 

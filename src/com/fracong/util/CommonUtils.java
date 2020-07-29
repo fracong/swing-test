@@ -12,10 +12,10 @@ public class CommonUtils {
 	public static String getPath(PathType type, String fileName, FileType fileType) {
 		return  new Object() {
 			public String getPath() {
-				String path = this.getClass().getResource(ConfigConstant.SLASH).getPath();
-				path = path.replace(ConfigConstant.BIN_, ConfigConstant.EMPTY);
-				path = path.concat(type.getName()+ConfigConstant.SLASH);
-				path = path.concat(fileName).concat(ConfigConstant.COMMA).concat(fileType.getName());
+				String path = this.getClass().getResource(CommonConstants.SLASH).getPath();
+				path = path.replace(CommonConstants.BIN_, CommonConstants.EMPTY);
+				path = path.concat(type.getName()+CommonConstants.SLASH);
+				path = path.concat(fileName).concat(CommonConstants.COMMA).concat(fileType.getName());
 				return path;
 			}
 		}.getPath();
@@ -25,7 +25,7 @@ public class CommonUtils {
         JSONObject jsonObject = new JSONObject();
         StringBuilder result = new StringBuilder();
         try{
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(url), ConfigConstant.UTF_8));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(url), CommonConstants.UTF_8));
             String s = null;
             while((s = bufferedReader.readLine()) != null){
                 result.append(s);

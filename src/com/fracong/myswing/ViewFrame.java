@@ -14,8 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fracong.config.ConfigProperties;
 import com.fracong.util.CommonUtils;
-import com.fracong.util.ConfigConstant;
 import com.fracong.util.EnumUtils.ConfigKey;
 import com.fracong.util.EnumUtils.FileType;
 import com.fracong.util.EnumUtils.PathType;
@@ -35,7 +35,7 @@ public class ViewFrame extends JFrame{
 	
 	private void checkInit() {
 		while (true) {
-			if(ConfigConstant.INIT_CONFIG.size() != 0)  break;
+			if(ConfigProperties.INIT_CONFIG.size() != 0)  break;
 			try {
 				Thread.sleep(10);
 			} catch (Exception e) {
@@ -69,15 +69,15 @@ public class ViewFrame extends JFrame{
 		
 		toolBar.addSeparator(new Dimension(0,10));
 		
-		JSONObject imgsPath = ConfigConstant.INIT_CONFIG.get(ConfigKey.IMG_PATH.getValue());
+		JSONObject imgsPath = ConfigProperties.INIT_CONFIG.get(ConfigKey.IMG_PATH.getValue());
 		JSONObject toolConfig = imgsPath.getJSONObject(ConfigKey.TOOL.getValue());
 		String saveAs = toolConfig.getString(ConfigKey.SAVE_AS.getValue());
 		String open = toolConfig.getString(ConfigKey.OPEN.getValue());
 		String save = toolConfig.getString(ConfigKey.SAVE.getValue());
 		String question = toolConfig.getString(ConfigKey.QUESTION.getValue());
 		
-		JSONObject tips = ConfigConstant.INIT_CONFIG.get(ConfigKey.TIPS.getValue());
-		JSONObject tipLangConfig = tips.getJSONObject(ConfigConstant.INIT_LANG);
+		JSONObject tips = ConfigProperties.INIT_CONFIG.get(ConfigKey.TIPS.getValue());
+		JSONObject tipLangConfig = tips.getJSONObject(ConfigProperties.INIT_LANG);
 		JSONObject tipToolConfig = tipLangConfig.getJSONObject(ConfigKey.TOOL.getValue());
 		String saveAsTip = tipToolConfig.getString(ConfigKey.SAVE_AS.getValue());
 		String openTip = tipToolConfig.getString(ConfigKey.OPEN.getValue());
