@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import com.fracong.config.ConfigProperties;
 import com.fracong.util.CommonUtils;
 import com.fracong.util.EnumUtils.FileType;
 import com.fracong.util.EnumUtils.PathType;
@@ -25,8 +24,6 @@ public class SwingTools {
 			{
 				String action =e.getActionCommand();
 				System.out.println("执行命令："+action);
-				System.out.println(ConfigProperties.INIT_CONFIG.toString());
-				System.out.println(ConfigProperties.ALL_CONFIG.toString());
 			}
 		});
 		return button;

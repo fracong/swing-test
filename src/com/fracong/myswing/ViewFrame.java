@@ -15,6 +15,7 @@ import javax.swing.JToolBar;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fracong.config.ConfigProperties;
+import com.fracong.entity.PropertiesUtilEntity;
 import com.fracong.util.CommonUtils;
 import com.fracong.util.EnumUtils.ConfigKey;
 import com.fracong.util.EnumUtils.FileType;
@@ -24,7 +25,7 @@ import com.fracong.util.EnumUtils.ToolActionType;
 public class ViewFrame extends JFrame{
 	private static final long serialVersionUID = 5429149711335650629L;
 
-	public ViewFrame(String title) {
+	public ViewFrame(String title) throws Exception {
 		super(title);
 		this.checkInit();
 		this.initFrame();
@@ -59,7 +60,7 @@ public class ViewFrame extends JFrame{
 		this.setBackground(Color.RED);
 	}
 	
-	public void addToolBar(){
+	public void addToolBar() throws Exception {
 		JPanel toolPanel=new JPanel();
 		toolPanel.setLayout(new BorderLayout());
 		
@@ -69,16 +70,17 @@ public class ViewFrame extends JFrame{
 		
 		toolBar.addSeparator(new Dimension(0,10));
 		
-		JSONObject imgsPath = ConfigProperties.INIT_CONFIG.get(ConfigKey.IMG_PATH.getValue());
-		JSONObject toolConfig = imgsPath.getJSONObject(ConfigKey.TOOL.getValue());
+		String[] imgKeys = new String[]{ConfigKey.TOOL.getValue()};
+		PropertiesUtilEntity imgUtilEntity = new PropertiesUtilEntity(ConfigProperties.INIT_CONFIG, ConfigKey.IMG_PATH, imgKeys);
+		JSONObject toolConfig = CommonUtils.readProperties(imgUtilEntity);
 		String saveAs = toolConfig.getString(ConfigKey.SAVE_AS.getValue());
 		String open = toolConfig.getString(ConfigKey.OPEN.getValue());
 		String save = toolConfig.getString(ConfigKey.SAVE.getValue());
 		String question = toolConfig.getString(ConfigKey.QUESTION.getValue());
 		
-		JSONObject tips = ConfigProperties.INIT_CONFIG.get(ConfigKey.TIPS.getValue());
-		JSONObject tipLangConfig = tips.getJSONObject(ConfigProperties.INIT_LANG);
-		JSONObject tipToolConfig = tipLangConfig.getJSONObject(ConfigKey.TOOL.getValue());
+		String[] tipKeys = new String[]{ConfigProperties.INIT_LANG, ConfigKey.TOOL.getValue()};
+		PropertiesUtilEntity tipUtilEntity = new PropertiesUtilEntity(ConfigProperties.INIT_CONFIG, ConfigKey.TIPS, tipKeys);
+		JSONObject tipToolConfig = CommonUtils.readProperties(tipUtilEntity);
 		String saveAsTip = tipToolConfig.getString(ConfigKey.SAVE_AS.getValue());
 		String openTip = tipToolConfig.getString(ConfigKey.OPEN.getValue());
 		String saveTip = tipToolConfig.getString(ConfigKey.SAVE.getValue());

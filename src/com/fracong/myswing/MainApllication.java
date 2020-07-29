@@ -6,7 +6,7 @@ import com.fracong.util.EnumUtils.ConfigType;
 
 public class MainApllication {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		new InitConfigThead(ConfigType.INIT).start();
 		new ViewFrame(CommonConstants.SWING_TITLE);
 		new InitConfigThead(ConfigType.ALL).start();
