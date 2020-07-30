@@ -1,4 +1,4 @@
-package com.fracong.util;
+package com.fracong.util.common;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -8,8 +8,9 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.fracong.entity.PropertiesUtilEntity;
-import com.fracong.util.EnumUtils.FileType;
-import com.fracong.util.EnumUtils.PathType;
+import com.fracong.util.common.CommonEnumUtils.FileType;
+import com.fracong.util.common.CommonEnumUtils.PathType;
+import com.fracong.util.config.ConfigEnumUtils.ConfigKey;
 
 public class CommonUtils {
 	public static String getPath(PathType type, String fileName, FileType fileType) {
@@ -53,11 +54,12 @@ public class CommonUtils {
 		return jsonObject;
 	}
 	
-	private static JSONObject getJSONObjectFromJson(JSONObject jsonObject, String... keys){
+	private static JSONObject getJSONObjectFromJson(JSONObject jsonObject, ConfigKey... keys){
 		JSONObject returnJson = (JSONObject) jsonObject.clone();
-		for (String key : keys) {
-			if (!checkJsonValid(returnJson.getString(key))) break;
-			returnJson = returnJson.getJSONObject(key);
+		for (ConfigKey key : keys) {
+			String value = key.getValue();
+			if (!checkJsonValid(returnJson.getString(value))) break;
+			returnJson = returnJson.getJSONObject(value);
 		}
 		return returnJson;
 	}

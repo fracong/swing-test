@@ -1,4 +1,4 @@
-package com.fracong.util;
+package com.fracong.util.common;
 
 public class CommonConstants {
 	public static final String SWING_TITLE = "SWING TEST";

@@ -10,9 +10,9 @@ import javax.swing.JToolBar;
 import com.alibaba.fastjson.JSONObject;
 import com.fracong.config.ConfigProperties;
 import com.fracong.entity.PropertiesUtilEntity;
-import com.fracong.util.CommonUtils;
-import com.fracong.util.EnumUtils.ConfigKey;
-import com.fracong.util.EnumUtils.ToolActionType;
+import com.fracong.util.common.CommonUtils;
+import com.fracong.util.config.ConfigEnumUtils.ConfigKey;
+import com.fracong.component.toolbar.ToolBarUtils.ToolActionType;
 
 public class ToolBarComponent {
 	private JPanel toolPanel;
@@ -36,7 +36,7 @@ public class ToolBarComponent {
 		
 		toolBar.addSeparator(new Dimension(0,10));
 		
-		String[] imgKeys = new String[]{ConfigKey.TOOL.getValue()};
+		ConfigKey[] imgKeys = new ConfigKey[]{ConfigKey.TOOL};
 		PropertiesUtilEntity imgUtilEntity = new PropertiesUtilEntity(ConfigProperties.INIT_CONFIG, ConfigKey.IMG_PATH, imgKeys);
 		JSONObject toolConfig = CommonUtils.readProperties(imgUtilEntity);
 		String saveAs = toolConfig.getString(ConfigKey.SAVE_AS.getValue());
@@ -44,8 +44,8 @@ public class ToolBarComponent {
 		String save = toolConfig.getString(ConfigKey.SAVE.getValue());
 		String question = toolConfig.getString(ConfigKey.QUESTION.getValue());
 		
-		String[] tipKeys = new String[]{ConfigProperties.INIT_LANG, ConfigKey.TOOL.getValue()};
-		PropertiesUtilEntity tipUtilEntity = new PropertiesUtilEntity(ConfigProperties.INIT_CONFIG, ConfigKey.TIPS, tipKeys);
+		ConfigKey[] tipKeys = new ConfigKey[]{ConfigKey.TIPS, ConfigKey.TOOL};
+		PropertiesUtilEntity tipUtilEntity = new PropertiesUtilEntity(ConfigProperties.INIT_CONFIG, ConfigKey.LANG_CONFIG, tipKeys);
 		JSONObject tipToolConfig = CommonUtils.readProperties(tipUtilEntity);
 		String saveAsTip = tipToolConfig.getString(ConfigKey.SAVE_AS.getValue());
 		String openTip = tipToolConfig.getString(ConfigKey.OPEN.getValue());

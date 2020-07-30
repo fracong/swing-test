@@ -7,24 +7,5 @@
 			"saveAs": "saveAs",
 			"question": "question"
 		}
-	},
-	"tips":{
-		"cn": {
-			"tool_config": {
-				"open": "打开",
-				"save": "保存",
-				"saveAs": "另存为",
-				"question": "帮助"
-			}
-		},
-		"en": {
-			"tool_config": {
-				"open": "Open",
-				"save": "Save",
-				"saveAs": "Save As",
-				"question": "Help"
-			}
-		}
 	}
-
 }

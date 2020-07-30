@@ -1,0 +1,21 @@
+{
+	"tips":{
+		"tool_config": {
+			"open": "Open",
+			"save": "Save",
+			"saveAs": "Save As",
+			"question": "Help"
+		}
+	},
+	"title": {
+		"menu_config": {
+			"fileMenu":"File",
+			"editMenu":"Edit",
+			"viewMenu":"View",
+			"aboutMenu":"About",
+			"fileCreate":"Create",
+			"fileOpen":"Open",
+			"fileExit":"Exit",
+		}
+	}
+}

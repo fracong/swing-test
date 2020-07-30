@@ -6,6 +6,12 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import com.alibaba.fastjson.JSONObject;
+import com.fracong.config.ConfigProperties;
+import com.fracong.entity.PropertiesUtilEntity;
+import com.fracong.util.common.CommonUtils;
+import com.fracong.util.config.ConfigEnumUtils.ConfigKey;
+
 public class MenuBarComponent {
 	private JMenuBar menuBar;
 	private JMenu fileMenu;
@@ -16,23 +22,26 @@ public class MenuBarComponent {
 	private JMenuItem openMenuItem;
 	private JMenuItem exitMenuItem;
 	
-	public MenuBarComponent() {
+	public MenuBarComponent() throws Exception {
 		this.createMenuBar();
 	}
 
-	public void createMenuBar() {
+	public void createMenuBar() throws Exception {
+		ConfigKey[] langKeys = new ConfigKey[]{ConfigKey.TITLE,ConfigKey.MENU};
+		PropertiesUtilEntity menuUtilEntity = new PropertiesUtilEntity(ConfigProperties.INIT_CONFIG, ConfigKey.LANG_CONFIG, langKeys);
+		JSONObject menuConfig = CommonUtils.readProperties(menuUtilEntity);
 		menuBar = new JMenuBar();
-		fileMenu = new JMenu("文件");
-        editMenu = new JMenu("编辑");
-        viewMenu = new JMenu("视图");
-        aboutMenu = new JMenu("关于");
+		fileMenu = new JMenu(menuConfig.getString(ConfigKey.MENU_FILE.getValue()));
+        editMenu = new JMenu(menuConfig.getString(ConfigKey.MENU_EDIT.getValue()));
+        viewMenu = new JMenu(menuConfig.getString(ConfigKey.MENU_VIEW.getValue()));
+        aboutMenu = new JMenu(menuConfig.getString(ConfigKey.MENU_ABOUT.getValue()));
         menuBar.add(fileMenu);
         menuBar.add(editMenu);
         menuBar.add(viewMenu);
         menuBar.add(aboutMenu);
-        newMenuItem = new JMenuItem("新建");
-        openMenuItem = new JMenuItem("打开");
-        exitMenuItem = new JMenuItem("退出");
+        newMenuItem = new JMenuItem(menuConfig.getString(ConfigKey.MENU_FILE_CREATE.getValue()));
+        openMenuItem = new JMenuItem(menuConfig.getString(ConfigKey.MENU_FILE_OPEN.getValue()));
+        exitMenuItem = new JMenuItem(menuConfig.getString(ConfigKey.MENU_FILE_EXIT.getValue()));
         fileMenu.add(newMenuItem);
         fileMenu.add(openMenuItem);
         fileMenu.addSeparator();

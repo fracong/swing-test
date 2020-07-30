@@ -8,10 +8,10 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 import com.fracong.config.ConfigProperties;
-import com.fracong.util.CommonUtils;
 import com.fracong.util.ComponentUtils;
-import com.fracong.util.EnumUtils.FileType;
-import com.fracong.util.EnumUtils.PathType;
+import com.fracong.util.common.CommonEnumUtils.FileType;
+import com.fracong.util.common.CommonEnumUtils.PathType;
+import com.fracong.util.common.CommonUtils;
 
 public class ViewFrame extends JFrame{
 	private static final long serialVersionUID = 5429149711335650629L;

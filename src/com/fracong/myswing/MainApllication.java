@@ -1,14 +1,15 @@
 package com.fracong.myswing;
 
 import com.fracong.thread.InitConfigThead;
-import com.fracong.util.CommonConstants;
-import com.fracong.util.EnumUtils.ConfigType;
+import com.fracong.util.common.CommonConstants;
+import com.fracong.util.config.ConfigEnumUtils.CommonConfigType;
+import com.fracong.util.config.ConfigEnumUtils.InitConfigType;
 
 public class MainApllication {
 
 	public static void main(String[] args) throws Exception {
-		new InitConfigThead(ConfigType.INIT).start();
+		new InitConfigThead(InitConfigType.ALL).start();
 		new ViewFrame(CommonConstants.SWING_TITLE);
-		new InitConfigThead(ConfigType.ALL).start();
+		new InitConfigThead(CommonConfigType.ALL).start();
 	}
 }

@@ -3,14 +3,14 @@ package com.fracong.entity;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSONObject;
-import com.fracong.util.EnumUtils.ConfigKey;
+import com.fracong.util.config.ConfigEnumUtils.ConfigKey;
 
 public class PropertiesUtilEntity {
 	private Map<String, JSONObject> map;
 	private ConfigKey mapKey;
-	private String[] keys;
+	private ConfigKey[] keys;
 	
-	public PropertiesUtilEntity(Map<String, JSONObject> map, ConfigKey mapKey, String[] keys) throws Exception {
+	public PropertiesUtilEntity(Map<String, JSONObject> map, ConfigKey mapKey, ConfigKey[] keys) throws Exception {
 		if(map == null ||  mapKey == null || keys == null) throw new Exception();
 		this.map = map;
 		this.mapKey = mapKey;
@@ -29,10 +29,10 @@ public class PropertiesUtilEntity {
 	public void setMapKey(ConfigKey mapKey) {
 		this.mapKey = mapKey;
 	}
-	public String[] getKeys() {
+	public ConfigKey[] getKeys() {
 		return keys;
 	}
-	public void setKeys(String[] keys) {
+	public void setKeys(ConfigKey[] keys) {
 		this.keys = keys;
 	}
 }

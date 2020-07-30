@@ -1,0 +1,21 @@
+{
+	"tips":{
+		"tool_config": {
+			"open": "打开",
+			"save": "保存",
+			"saveAs": "另存为",
+			"question": "帮助"
+		}
+	},
+	"title": {
+		"menu_config": {
+			"fileMenu":"文件",
+			"editMenu":"编辑",
+			"viewMenu":"查看",
+			"aboutMenu":"关于",
+			"fileCreate":"新建",
+			"fileOpen":"打开",
+			"fileExit":"退出",
+		}
+	}
+}

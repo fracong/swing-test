@@ -6,12 +6,14 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import com.fracong.util.CommonUtils;
-import com.fracong.util.EnumUtils.FileType;
-import com.fracong.util.EnumUtils.PathType;
-import com.fracong.util.EnumUtils.ToolActionType;
+import com.fracong.util.common.CommonUtils;
+import com.fracong.util.common.CommonEnumUtils.FileType;
+import com.fracong.util.common.CommonEnumUtils.PathType;
 
 public class ToolBarUtils {
+	public static enum ToolActionType{
+		OPEN, SAVE, SAVE_AS, HELP;
+	}
 
 	public static JButton createButton(String imageUrl,ToolActionType command,String tip){
 		JButton button=new JButton();

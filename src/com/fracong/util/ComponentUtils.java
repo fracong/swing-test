@@ -18,7 +18,7 @@ public class ComponentUtils {
 		frame.setContentPane(ConfigProperties.toolBarComponent.getToolPanel());
 	}
 	
-	public static void resetMenuBar(JFrame frame){
+	public static void resetMenuBar(JFrame frame) throws Exception{
 		ComponentUtils.addMenuBar();
 		frame.setJMenuBar(ConfigProperties.menuBarComponent.getMenuBar());
 	}
@@ -28,7 +28,7 @@ public class ComponentUtils {
 		ConfigProperties.toolBarComponent = toolBar;
 	}
 
-	public static void addMenuBar() {
+	public static void addMenuBar() throws Exception {
 		MenuBarComponent menuBar = new MenuBarComponent();
         ConfigProperties.menuBarComponent = menuBar;
 	}
