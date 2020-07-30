@@ -45,6 +45,7 @@ public class ConfigEnumUtils {
 		QUESTION("question"),
 		TIPS("tips"),
 		TITLE("title"),
+		TITLE_FRAME("frame"),
 		MENU("menu_config"),
 		MENU_FILE("fileMenu"),
 		MENU_EDIT("editMenu"),

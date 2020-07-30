@@ -9,6 +9,7 @@ import com.fracong.component.toolbar.ToolBarComponent;
 import com.fracong.util.common.CommonEnumUtils.LangType;
 
 public class ConfigProperties {
+	public static String FRAME_TITLE;
 	public static final ConcurrentMap<String, JSONObject> INIT_CONFIG = new ConcurrentHashMap<String, JSONObject>();
 	public static final ConcurrentMap<String, JSONObject> ALL_CONFIG = new ConcurrentHashMap<String, JSONObject>();
 	public static String INIT_LANG = LangType.ZH_CN.getValue();

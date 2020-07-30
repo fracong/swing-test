@@ -7,27 +7,36 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+import com.alibaba.fastjson.JSONObject;
+import com.fracong.component.ComponentUtils;
 import com.fracong.config.ConfigProperties;
-import com.fracong.util.ComponentUtils;
 import com.fracong.util.common.CommonEnumUtils.FileType;
 import com.fracong.util.common.CommonEnumUtils.PathType;
 import com.fracong.util.common.CommonUtils;
+import com.fracong.util.config.ConfigEnumUtils.ConfigKey;
 
 public class ViewFrame extends JFrame{
 	private static final long serialVersionUID = 5429149711335650629L;
 
-	public ViewFrame(String title) throws Exception {
-		super(title);
+	public ViewFrame() throws Exception {
 		this.checkInit();
+		this.setTitle(ConfigProperties.FRAME_TITLE);
 		this.initFrame();
 		this.setVisible(true);
 	}
 	
 	private void checkInit() {
 		while (true) {
-			if(ConfigProperties.INIT_CONFIG.size() != 0)  break;
+			JSONObject langJson = ConfigProperties.INIT_CONFIG.get(ConfigKey.LANG_CONFIG.getValue());
+			if (langJson != null) {
+				JSONObject titleJson = langJson.getJSONObject(ConfigKey.TITLE.getValue());
+				if (titleJson != null) {
+					ConfigProperties.FRAME_TITLE = titleJson.getString(ConfigKey.TITLE_FRAME.getValue());
+				}
+			}
+			if (ConfigProperties.INIT_CONFIG.size() != 0 && ConfigProperties.FRAME_TITLE != null && !"".equals(ConfigProperties.FRAME_TITLE))  break;
 			try {
-				Thread.sleep(10);
+				Thread.sleep(1000);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

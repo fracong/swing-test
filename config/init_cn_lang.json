@@ -8,6 +8,7 @@
 		}
 	},
 	"title": {
+		"frame":"SWING测试",
 		"menu_config": {
 			"fileMenu":"文件",
 			"editMenu":"编辑",

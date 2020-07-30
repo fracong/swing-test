@@ -8,6 +8,7 @@
 		}
 	},
 	"title": {
+		"frame": "SWING TEST",
 		"menu_config": {
 			"fileMenu":"File",
 			"editMenu":"Edit",

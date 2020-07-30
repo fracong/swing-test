@@ -1,4 +1,4 @@
-package com.fracong.util;
+package com.fracong.component;
 
 import javax.swing.JFrame;
 
