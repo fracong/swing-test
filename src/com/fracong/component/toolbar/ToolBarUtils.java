@@ -1,4 +1,4 @@
-package com.fracong.myswing;
+package com.fracong.component.toolbar;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +11,8 @@ import com.fracong.util.EnumUtils.FileType;
 import com.fracong.util.EnumUtils.PathType;
 import com.fracong.util.EnumUtils.ToolActionType;
 
-public class SwingTools {
+public class ToolBarUtils {
+
 	public static JButton createButton(String imageUrl,ToolActionType command,String tip){
 		JButton button=new JButton();
 		button.setActionCommand(command.toString());
