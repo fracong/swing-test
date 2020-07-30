@@ -53,7 +53,7 @@ public class ViewFrame extends JFrame{
 		this.setResizable(false);
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Image myimage=this.getToolkit().getImage(CommonUtils.getPath(PathType.IMG, "image", FileType.PNG));
+		Image myimage=this.getToolkit().getImage(CommonUtils.getPath(PathType.IMG, ConfigKey.IMAGE.getValue(), FileType.PNG));
 		this.setIconImage(myimage);
 		this.setBackground(Color.RED);
 		

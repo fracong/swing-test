@@ -38,6 +38,7 @@ public class ConfigEnumUtils {
 		LANG("lang"),
 		LANG_CONFIG("lang_config"),
 		IMG_PATH("imgs_path"),
+		IMAGE("image"),
 		TOOL("tool_config"),
 		SAVE_AS("saveAs"),
 		SAVE("save"),
